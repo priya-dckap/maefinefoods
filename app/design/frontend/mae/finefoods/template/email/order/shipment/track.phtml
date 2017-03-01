@@ -19,7 +19,7 @@
  * needs please refer to http://www.magento.com for more information.
  *
  * @category    design
- * @package     base_default
+ * @package     rwd_default
  * @copyright   Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
@@ -36,7 +36,7 @@
     </thead>
     <tbody>
     <?php $i=0; foreach ($_shipment->getAllTracks() as $_item): $i++ ?>
-        <tr <?php echo $i%2?'bgcolor="#F6F6F6"':'' ?>>
+    <tbody>
             <td align="left" valign="top" style="padding:3px 9px"><?php echo $this->escapeHtml($_item->getTitle()) ?></td>
             <td align="center" valign="top" style="padding:3px 9px"><?php echo $this->escapeHtml($_item->getNumber()) ?></td>
         </tr>

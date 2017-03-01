@@ -19,7 +19,7 @@
  * needs please refer to http://www.magento.com for more information.
  *
  * @category    design
- * @package     base_default
+ * @package     rwd_default
  * @copyright   Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
@@ -60,8 +60,9 @@
                             <div class="btn-close"><a href="#" id="payment-tool-tip-close" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Close')) ?>"><?php echo $this->__('Close') ?></a></div>
                             <div class="tool-tip-content"><img src="<?php echo $this->getSkinUrl('images/cvv.gif') ?>" alt="<?php echo Mage::helper('core')->quoteEscape($this->__('Card Verification Number Visual Reference')) ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Card Verification Number Visual Reference')) ?>" /></div>
                         </div>
+                        <?php echo $this->getChildHtml('payment_methods_before') ?>
                         <!-- Payment methods forms list -->
-                        <dl class="sp-methods">
+                        <dl id="payment-methods" class="sp-methods">
                         <?php
                             $_methods       = $this->getMethods();
                             $_methodsCount  = count($_methods);
@@ -82,6 +83,7 @@
                             <?php endif; ?>
                         <?php endforeach; ?>
                         </dl>
+                        <?php echo $this->getChildHtml('payment_methods_after') ?>
                         <?php echo $this->getChildHtml('checkout_billing_items') ?>
                     </div>
                 </div>
@@ -95,6 +97,7 @@
     <script type="text/javascript">
     //<![CDATA[
         var payment = new paymentForm('multishipping-billing-form');
+        var quoteBaseGrandTotal = <?php echo (float)$this->getQuoteBaseGrandTotal(); ?>;
         function toggleToolTip(event){
             if($('payment-tool-tip')){
                 /*$('payment-tool-tip').setStyle({

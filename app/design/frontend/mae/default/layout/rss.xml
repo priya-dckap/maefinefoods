@@ -20,7 +20,7 @@
  * needs please refer to http://www.magento.com for more information.
  *
  * @category    design
- * @package     base_default
+ * @package     rwd_default
  * @copyright   Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
@@ -30,9 +30,6 @@
     Default layout, loads most of the pages
     -->
     <default>
-        <reference name="footer_links">
-            <action method="addLink" translate="label title" module="rss" ifconfig="rss/config/active"><label>RSS</label><url>rss</url><title>RSS</title><prepare>true</prepare><urlParams/><position/><li/><a>class="link-rss"</a></action>
-        </reference>
         <block type="rss/list" name="head_rss" ifconfig="rss/config/active" />
     </default>
 

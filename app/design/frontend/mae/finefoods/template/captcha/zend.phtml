@@ -19,33 +19,33 @@
  * needs please refer to http://www.magento.com for more information.
  *
  * @category    design
- * @package     base_default
+ * @package     rwd_default
  * @copyright   Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-<?php /* @var $this Mage_Captcha_Block_Captcha_Zend */ ?>
+<?php /* @var $this Mage_Core_Block_Captcha_Zend */ ?>
 
-<?php /* @var $captcha Mage_Captcha_Model_Zend */ ?>
+<?php /* @var $captcha Mage_Core_Model_Captcha_Zend */ ?>
 <?php $captcha = $this->getCaptchaModel() ?>
-<li id="captcha-input-box-<?php echo $this->getFormId()?>">
+<li class="captcha-input-container" id="captcha-input-box-<?php echo $this->getFormId()?>">
     <label for="captcha_<?php echo $this->getFormId() ?>" class="required"><em>*</em><?php echo $this->__('Please type the letters below')?></label>
     <div class="input-box captcha">
         <input name="<?php echo Mage_Captcha_Helper_Data::INPUT_NAME_FIELD_VALUE ?>[<?php echo $this->getFormId()?>]" type="text" class="input-text required-entry" id="captcha_<?php echo $this->getFormId() ?>" />
     </div>
 </li>
-<li>
+<li class="captcha-img-container">
     <div class="captcha-image" id="captcha-image-box-<?php echo $this->getFormId()?>">
-        <img id="captcha-reload" class="captcha-reload" src="<?php echo $this->getSkinUrl('images/reload.png') ?>" alt="<?php echo $this->__('Reload captcha') ?>" onclick="$('<?php echo $this->getFormId()?>').captcha.refresh(this)">
+        <img id="captcha-reload" class="captcha-reload" src="<?php echo $this->getSkinUrl('images/reload.png') ?>" alt="<?php echo Mage::helper('core')->quoteEscape($this->__('Reload captcha')) ?>" onclick="$('<?php echo $this->getFormId()?>').captcha.refresh(this)">
         <img id="<?php echo $this->getFormId() ?>" class="captcha-img" height="<?php echo $this->getImgHeight() ?>" src="<?php echo $captcha->getImgSrc() ?>"/>
         <?php if ($captcha->isCaseSensitive()) :?>
-        <div class="captcha-note">
-            <?php echo $this->__('<strong>Attention</strong>: Captcha is case sensitive.') ?>
-        </div>
+            <div class="captcha-note">
+                <?php echo $this->__('<strong>Attention</strong>: Captcha is case sensitive.') ?>
+            </div>
         <?php endif; ?>
     </div>
     <script type="text/javascript">//<![CDATA[
         $('<?php echo $this->getFormId() ?>').captcha = new Captcha('<?php echo $this->getRefreshUrl() ?>', '<?php echo $this->getFormId() ?>');
-    //]]></script>
+        //]]></script>
 </li>
 
