@@ -19,7 +19,7 @@
  * needs please refer to http://www.magento.com for more information.
  *
  * @category    design
- * @package     base_default
+ * @package     rwd_default
  * @copyright   Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
@@ -34,7 +34,7 @@
 <?php $gridElements = $this->getGridElements(); ?>
 <?php if ($gridElements): ?>
     <?php echo $this->getChildHtml('pager'); ?>
-    <table id="<?php echo $this->getGridHtmlId() ?>" class="data-table">
+    <table id="<?php echo $this->getGridHtmlId() ?>" class="data-table linearize-table-large">
 <?php foreach ($this->getGridColumns() as $column):?>
         <col <?php $width = $this->getObjectData($column, 'width'); echo $width ? ' width="' . $width . '"' : '' ?>/>
 <?php endforeach; ?>
@@ -60,7 +60,7 @@ $linkAnchorText = $this->getObjectData($row, "{$index}_link_text");
 $linkText = $linkUrl ? ($linkAnchorText ? $linkAnchorText : $value) : '';
 $linkFormat = $linkUrl ? '<a href="%s">%s</a>' : '';
 ?>
-                <td<?php $this->getObjectData($row, 'is_amount') ? ' class="a-right"' : '' ?>><?php
+                <td<?php $this->getObjectData($row, 'is_amount') ? ' class="a-right"' : '' ?> data-rwd-label="<?php echo $this->getObjectData($column, 'title') ?>"><?php
 if ($linkFormat) {
     echo sprintf($nobr, sprintf($linkFormat, $this->escapeHtml($linkUrl), $this->escapeHtml($linkText)));
 } else {
